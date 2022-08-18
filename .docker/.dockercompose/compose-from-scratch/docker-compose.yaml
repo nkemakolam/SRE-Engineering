@@ -1,0 +1,60 @@
+# docker container run idt --name vote -p 5000:80 initcron/vote:master
+# where 5000 is hostport and 80 is container port
+#idt interactive deamon means background
+#initcron/vote:master name of the image in a public dockerhub
+# the docker command above is same as the vote session in the compose file because docker compose is a yaml representation of docker run command
+# you can not have two service on the host side to use same port but you can have conatainers using same port and 
+# note that the port of the host is always on the left side of the command or query
+# Command that were used her 
+# docker-compose up -d
+# docker-compose exec vote  sh
+# the redis on the right hand side is the actual connection string
+version: "3.7"
+
+volumes:
+ db-data:
+networks:
+ instavote:
+  driver: bridge
+services: 
+ vote:
+   image: initcron/vote:master
+   ports: 
+    - 5000:80
+   depends_on: 
+    - redis
+   networks:
+    - instavote
+ redis:
+   image: redis:alpine
+   networks:
+    - instavote
+
+ db:
+   image: postgres:9.4
+   volumes:
+     - "db-data:/var/lib/postgresql/data"
+   environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ghosts2234
+      POSTGRES_DB: db
+   restart: unless-stopped
+  
+   networks:
+    - instavote
+
+ result:
+   image: initcron/result:master
+   ports: 
+    - 5001:4000
+   depends_on:
+    - db
+   networks:
+    - instavote
+ worker:
+   image: initcron/worker:latest
+   depends_on: 
+    - redis
+    - db
+   networks:
+    - instavote

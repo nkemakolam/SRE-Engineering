@@ -1,0 +1,9 @@
+namespace: cert
+resources:
+- blue-deployment.yaml
+- blue-hello-service.yaml
+- green-hello-service.yaml
+- green-deployment.yaml
+#- ingress.yaml
+- ingress2.yaml
+

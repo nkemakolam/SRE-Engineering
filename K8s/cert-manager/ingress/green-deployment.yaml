@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-green-whale
+    
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-green-whale-app
+  template:
+    metadata:
+      name: hello-green-whale-pod
+      labels:
+        app: hello-green-whale-app
+    spec:
+      containers:
+      - name: hello-green-whale-container
+        image: vamsijakkula/hello-green-whale:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: regcred

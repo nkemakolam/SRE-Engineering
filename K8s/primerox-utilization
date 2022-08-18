@@ -1,0 +1,34 @@
+https://stackoverflow.com/questions/54531646/checking-kubernetes-pod-cpu-and-memory
+
+kubectl get ns | tail -n +2 |wc -l
+
+kubectl get ns|grep sand| tail -n +2 | wc -l
+
+Sand 33
+prod 33
+
+kubectl exec -it pod_name -- /bin/bash
+**CPU**
+cd /sys/fs/cgroup/cpu
+cat cpuacct.usage
+
+**Memeory*
+cd /sys/fs/cgroup/memory
+
+cat memory.usage_in_bytes
+
+
+
+Primerox application
+cpu 3397644491200
+
+mem 313118720 in byte == 313 mb
+
+primero sol it self
+cpu 3078906086800
+mem 727314432 = 727.314432 in MB
+
+primerox sol worker
+cpu 128628674300
+mem 206737408 = 206.737408
+one perimero deployment takes about 1.3 gb of ram
