@@ -10,7 +10,6 @@
 # docker-compose exec vote  sh
 # the redis on the right hand side is the actual connection string
 version: "3.7"
-
 volumes:
  db-data:
 networks:
@@ -29,7 +28,6 @@ services:
    image: redis:alpine
    networks:
     - instavote
-
  db:
    image: postgres:9.4
    volumes:
@@ -39,10 +37,8 @@ services:
       POSTGRES_PASSWORD: ghosts2234
       POSTGRES_DB: db
    restart: unless-stopped
-  
    networks:
     - instavote
-
  result:
    image: initcron/result:master
    ports: 
