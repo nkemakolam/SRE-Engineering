@@ -33,7 +33,7 @@ voterContract.deploy({
 })
 .send ({
     from: account.address,
-    gas: 150000
+    gas: 140476
 }).on('transactionHash',function(transactionHash){
     console.log(`Transaction hash: hash ${transactionHash}`)
 
