@@ -1,0 +1,12 @@
+FROM centos:7
+COPY . .
+MAINTAINER Devopscube
+RUN yum -y update && \
+    yum -y install httpd && \
+    yum clean all
+
+#COPY ./script.sh /
+#RUN chmod +x /script.sh
+CMD ["/custom.sh"]
+
+
