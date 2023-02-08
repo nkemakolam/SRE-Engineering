@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: solr-pod
+spec:
+  containers:
+  - name: solr-container
+    image: solr:7.7.2
+    readinessProbe:
+      exec:
+        command:
+        - /bin/sh
+        - -c
+        - |
+          health=$(curl -s "http://localhost:8983/solr/admin/ping" | grep '"status":"OK"')
+          if [ -n "$health" ]; then
+            exit 0
+          else
+            exit 1
+          fi
+      initialDelaySeconds: 5
+      periodSeconds: 10

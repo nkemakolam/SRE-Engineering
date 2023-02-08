@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: restart-solr-pod
+spec:
+  backoffLimit: 4
+  template:
+    metadata:
+      name: restart-solr-pod
+    spec:
+      containers:
+      - name: restart-solr-pod
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - |
+          until kubectl get pods -l app=solr | grep -E "(Running|Completed)" ; do
+            echo "Solr pod is not in ready state, restarting..."
+            kubectl delete pod -l app=solr
+          done
+        restartPolicy: OnFailure
+  activeDeadlineSeconds: 60
