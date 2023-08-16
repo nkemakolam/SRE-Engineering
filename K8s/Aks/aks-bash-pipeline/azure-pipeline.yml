@@ -1,0 +1,38 @@
+
+trigger:
+ branches:
+  include:
+   - master
+  
+
+pool:
+  vmImage: ubuntu-latest
+variables:
+  k8sServiceConnection: 'ATRIUM-K8S'
+stages:
+- stage: Deploy
+  displayName: Deploy stage
+  jobs: 
+  - job: App
+  
+    displayName: deploy
+    steps:
+    - task: Kubernetes@1
+      displayName: 'kubectl '
+      inputs:
+        kubernetesServiceEndpoint: '$(k8sServiceConnection)'
+        namespace: 'demo-app'
+        command: login
+    - task: Bash@3
+      displayName: 'Bash Script'
+      inputs:
+         targetType: filePath
+         filePath: ./deployment.sh
+
+    
+   
+   
+      
+     
+          
+         

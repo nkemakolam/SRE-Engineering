@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: restart-solr-pod
+spec:
+  backoffLimit: 4
+  template:
+    metadata:
+      name: restart-solr-pod
+    spec:
+      containers:
+      - name: restart-solr-pod
+        image: ubuntu
+        command:
+        - /bin/bash
+        - -c
+        - |
+          kubectl exec -it restart-solr-pod --  apt install curl
+          sleep 30
+          kubectl version --client
+          until kubectl get pods -l app=solrApp | cat /opt/solr/nkem.txt | grep "loging nkem" ; do
+            echo "Solr pod is not in ready state, restarting..."
+            kubectl delete pod -l app=solrApp
+          done
+      restartPolicy: OnFailure
+  activeDeadlineSeconds: 60

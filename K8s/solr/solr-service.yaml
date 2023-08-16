@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+     app: solrApp
+  name: solr-service
+spec:
+  selector:
+    # Set of Pods targeted by a Service. Matches pods with the label solrApp.
+    app: solrApp 
+  ports:
+  - port: 8983 # Port exposed by the service.
+    targetPort: 8983 # Target port 8983 on any pod.

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solr-deployment
+ 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solrApp
+  template:
+    metadata:
+      labels:
+        app: solrApp
+    spec:
+      containers:
+      - name: solr-container
+        image: solr:7.5.0
+        ports:
+        - containerPort: 8983
+          name: solrapp
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - |
+              echo "loging nkem" > /opt/solr/nkem.txt
+              # health=$(curl -s "http://localhost:8983/solr/admin/ping" | grep '"status":"OK"')
+              # if [ -n "$health" ]; then
+              #   exit 0
+              # else
+              #   exit 1
+              # fi
+          initialDelaySeconds: 5
+          periodSeconds: 10

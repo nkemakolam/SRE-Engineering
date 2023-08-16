@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: solr-deployment # Names your deployment.
+  labels: # Used to organize and select subsets of Kubernetes objects.
+    app: solrApp
+spec:
+  # State the number of replicas of the application you need.
+  replicas: 3 
+  # Defines how the Deployment finds which Pods to manage.
+  selector: 
+    matchLabels:
+      app: solrApp 
+  template:
+    metadata:
+      labels:
+        app: solrApp
+    spec:
+      containers:
+      # State the image's name on Docker Hub to build the container from.
+      - name: solr 
+        image: solr
+        # State container port for Solr server (8983).
+        ports:
+        - containerPort: 8983
+          name: solrapp
