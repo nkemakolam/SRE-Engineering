@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>View Articles</h2>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('main.post') }}" class="btn btn-primary">Post an Article</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+
+
+[theme]
+
+# Primary accent for interactive elements
+primaryColor = '#E694FF'
+
+# Background color for the main content area
+# #FFFFFF [white code] '#000000' [balck code] #00172B [darkblue]
+backgroundColor = '#00172B'
+
+# Background color for sidebar and most interactive widgets
+secondaryBackgroundColor = '#0083B8'
+
+# Color used for almost all text
+textColor = '#FFFFFF'
+
+# Font family for all text in the app, except code blocks
+# Accepted values (serif | sans serif | monospace) 
+# Default: "sans serif"
+font = "Monaco"
+
+# font style names for update
+ #Monaco
+ #Fantasy
+ #Courier New
+ #Brush Script
+
+
+#----- ref-----
+##https://blog.streamlit.io/introducing-theming/
+## font // https://www.hostinger.com/tutorials/best-html-web-fonts

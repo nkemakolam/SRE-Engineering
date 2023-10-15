@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Login</h2>
+    <a href="{{ url_for('auth.azure_b2c') }}">Login with Azure B2C</a>
+    <a href="{{ url_for('auth.google_login') }}">Login with Google</a>
+{% endblock %}

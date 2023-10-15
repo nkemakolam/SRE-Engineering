@@ -1,0 +1,24 @@
+ You spend the money right
+away so you can get-- GARY GENSLER: This is
+the principal reason that's talked about, not
+only in the literature, but in the early blog post,
+was, well, how many blocks does the chain have to go
+before everybody really thinks it's consensus? You could have said 5, 10, 20  I come out where I think
+the genius is bringing it all together, and using
+Adam Back's proof of work in a way that really
+addressed double spend  AUDIENCE: So I was
+just thinking about, as one of the applications
+of the hash function-- so does the hash function
+actually replace the data? So I'm thinking now that
+everyone's saving data in the cloud, so can you
+save a hash function instead of your actual data, and
+then so it can be compressed? GARY GENSLER: Very good
+question-- my summary of it-- though others' probably
+would be more expert  Anybody want to take a guess? Where's Alin? Not Alin the PhD, but Alin
+from the digital currency initiative  AUDIENCE: So if you were to set
+the lock time in the future, could that mess up the
+blocks in the chain? What is kind of the
+right chain of events that you're recognizing
+if you're choosing to set a lock time in the future? I guess the broader question
+would be, why would you set a lock time in the future? GARY GENSLER: Shimon,
+were you answering that? AUDIENCE: No, no, no
