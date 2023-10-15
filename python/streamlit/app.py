@@ -8,7 +8,7 @@ st.set_page_config(page_title="Careerflipper", page_icon=":tada:",layout="wide")
 
 def load_lottieurl(url):
     r = requests.get(url)
-    if r.status_code != 200:
+    if r.status_code != 200: 
         return None
     return r.json()
 
@@ -16,12 +16,12 @@ def load_lottieurl(url):
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html=True)
-local_css("/style/style.css")       
+local_css("python/streamlit/style/style.css")       
 
 # ---- LOAD ASSETS -----
 lottie_coding = load_lottieurl("https://lottie.host/033356c6-00c2-4bee-9d90-27fd53b471e3/d1okLaxjYq.json")
-img_devops_proc = Image.open("/images/devops.jpeg")
-img_devopsqr_code = Image.open("/images/devopsqr.png")
+img_devops_proc = Image.open("python/streamlit/images/devops.jpeg")
+img_devopsqr_code = Image.open("python/streamlit/images/devopsqr.png")
 
 with st.container():  
     st.subheader("Hello, Champs let go get the new job :wave:")
